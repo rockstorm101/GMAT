@@ -10,7 +10,7 @@ The build and install process of GMAT on Mac/Linux is both tedious and unclear, 
 
 Therefore this is an **unofficial** repository of GMAT R2015a. It simply gathers all the necessary files from the [official repository](http://sourceforge.net/projects/gmat/), adds a compile-and-install script and details the installation process.
 
-This work is inspired in the work done by @natronics in [this repository](https://github.com/natronics/GMAT). However, this previous work has now become outdated thus this newer repository being necessary.
+This work is inspired by the work done by @natronics in [this repository](https://github.com/natronics/GMAT). However, this previous work has now become outdated thus this newer repository being necessary.
 
 ## Installation and Run
 
@@ -37,11 +37,12 @@ You can manually install them or try running `LinuxInstallDependencies` as admin
 
 To build and install GMAT simply clone this repository
 
-`git clone ...`
+`git clone https://github.com/rockstorm101/GMAT.git`
 
 and run the compile-and-install script
 
 `cd GMAT`
+
 `./LinuxCompileAndInstall`
 
 A folder will be created ("GMAT-R2015a" by default) with all the necessary files to run GMAT.
@@ -60,5 +61,5 @@ Apache License v2.0. See `License.txt`
 
 ## Support
 
-For bugs, feature requests, comments or advise please fill in an issue.
+For bugs, feature requests, comments or advise please fill in an issue [here](https://github.com/rockstorm101/GMAT/issues).
 
