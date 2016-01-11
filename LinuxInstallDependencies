@@ -1,0 +1,25 @@
+#! /bin/bash
+
+# Locate package installer
+if [[ "$(which apt-get)" ]]; then
+	pkgman="apt-get"
+	install="apt-get install"
+elif [[ "$(which yum)" ]]; then
+	pkgman="yum"
+	install="yum install"
+elif [[ "$(which pacman)" ]]; then
+	pkgman="pacman"
+	install="pacman -S"
+elif [[ "$(which pkg)" ]]; then
+	pkgman="pkg"
+	install="pkg install"
+else
+	echo "Error: Unable to locate a package installing application."
+	echo "	Please report this issue to <rockstorm@gmx.com> stating your"
+	echo "	distribution and the package installing application you use."
+	exit 1
+fi
+
+# Install dependencies
+installdep="${install} build-essential cmake csh curl dos2unix freeglut3-dev g++ libdevil-dev libgl1-mesa-dev libglu1-mesa-dev libgtk2.0-dev libgtk-3-dev"
+$installdep

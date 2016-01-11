@@ -1,0 +1,35 @@
+#!/bin/bash
+# Author:	Rock Storm <rockstorm@gmx.com>
+# Project:	Gmat
+# Title:	LinuxCompileAndInstall
+# Purpose:	This script automates de build and install process of GMAT 
+#			on Mac/Linux. It creates a folder ("GMAT-R2015a" by
+#			default) with all the necessary files to run GMAT.
+# Usage:	LinuxCompileAndInstall
+
+# Set installation directory
+install_dir="../GMAT-R2015a"
+
+# Configure the GMAT dependencies
+cd depends
+dos2unix configure.sh
+chmod +x configure.sh
+./configure.sh
+cd ..
+
+# Detect architecture and set CSPICE directory
+if [[ "$(uname -m)" = *"64" ]]
+then
+  arch="64"
+else
+  arch="32"
+fi
+cspice_dir="./depends/cspice/linux/cspice${arch}"
+
+# Build and install
+cmake . -DCSPICE_DIR="${cspice_dir}" -DCMAKE_INSTALL_PREFIX="${install_dir}"
+make
+make install
+
+# Copy data files
+cp -r ./data ${install_dir}/
